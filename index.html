@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Оплата заказа — PEGAS TRUCK</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PEGAS TRUCK">
+<meta property="og:title" content="Оплата заказа — PEGAS TRUCK">
+<meta property="og:description" content="Откройте ссылку, нажмите «Оплатить» и выберите свой банк.">
+<meta property="og:image" content="https://oplata.pegastruck.ru/og.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="robots" content="noindex">
+<script>
+// Переадресация на страницу оплаты PEGAS TRUCK (30.10.2026).
+// Зачем: роботы Meta не открывают наши серверы в РФ, Instagram долго строит превью ссылки,
+// и коннектор i2crm шлёт клиенту копии. Эта страница отдаёт превью сразу, а человека ведёт дальше.
+// ?КОД — оплата по СБП (pay.pegastruck.ru/КОД), ?c=КОД — оплата картой (card.pegastruck.ru/КОД).
+(function () {
+  var q = location.search.slice(1).split("&")[0], u = "https://pay.pegastruck.ru/";
+  if (/^c=[A-Za-z0-9]{3,40}$/.test(q)) u = "https://card.pegastruck.ru/" + q.slice(2);
+  else if (/^[A-Za-z0-9]{3,40}$/.test(q)) u += q;
+  window.__u = u;
+  location.replace(u);
+})();
+</script>
+<style>body{font:17px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;text-align:center;padding:48px 16px;color:#222}a{color:#c8102e}</style>
+</head>
+<body>
+<p>Открываем страницу оплаты…</p>
+<p><a id="a" href="https://pay.pegastruck.ru/">Если не открылась, нажмите сюда</a></p>
+<script>document.getElementById("a").href = window.__u;</script>
+</body>
+</html>
